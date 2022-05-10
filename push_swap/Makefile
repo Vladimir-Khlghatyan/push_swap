@@ -67,21 +67,31 @@ NAME_B		= checker
 
 $(NAME):	${OBJS}
 			${CC}  ${CFLAGS} -o ${NAME} ${OBJS}
+			@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all:		${NAME}
 			
 
 clean:
 			${RM} ${OBJS} ${BONUS_OBJS}
+			@echo -e "$(YELLOW)object files deleted!$(DEFAULT)"
 
 fclean:		clean
 			${RM} ${NAME} ${NAME_B}
+			@echo -e "$(RED)all deleted!$(DEFAULT)"
 
 re:			fclean all
 
-bonus:		${NAME_B}			
+bonus:		${NAME_B}
+			@echo -e "$(GREEN)$(NAME_B) created!$(DEFAULT)"			
 
 $(NAME_B):	${BONUS_OBJS}
 			${CC}  ${CFLAGS} -o ${NAME_B} ${BONUS_OBJS}
 
 .PHONY:		all clean fclean re bonus
+
+#COLORS
+RED = \033[1;31m
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+DEFAULT = \033[0m
