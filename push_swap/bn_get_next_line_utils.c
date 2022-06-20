@@ -91,13 +91,13 @@ char	*read_from_file(int fd, char *temp)
 	char	*buf;
 	int		sz;
 
-	buf = (char *)malloc(42);
+	buf = (char *)malloc(2);
 	if (!buf)
 		return (NULL);
 	sz = 1;
 	while (!ft_strchr_upd(temp, '\n') && sz != 0)
 	{
-		sz = read(fd, buf, 42);
+		sz = read(fd, buf, 1);
 		if (sz == -1)
 		{
 			free(buf);
